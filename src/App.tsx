@@ -1,7 +1,7 @@
 import React from 'react';
 import GlobalStyles from './styles/global';
 import {Main, Section, Sticky} from './styles/index';
-import { FirstAndSecond } from './components/FirstAndSecond';
+import FirstAndSecond from './components/FirstAndSecond';
 
 function App() {
   return (

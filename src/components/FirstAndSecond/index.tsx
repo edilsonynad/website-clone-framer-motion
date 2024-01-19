@@ -1,14 +1,20 @@
 import React, { ReactNode } from 'react';
-import { motion, useTransform } from 'framer-motion';
+import { motion, useTransform, useViewportScroll } from 'framer-motion';
 import { Sticky } from '../../styles/index';
 
 
 const FirstAndSecond: React.FC =() => {
 
-  const frameOpacity = useTransform();
+  const {scrollYProgress} = useViewportScroll();
+
+  const frameOpacity = useTransform(scrollYProgress, [0.196, 0.918], [0, 1]);
+  const frameScale = useTransform(scrollYProgress, [0.556, 0.627], [0.551, 0.8]);
 
 
   return <Sticky  className="second">
+
+    <First /> 
+
     <motion.div style={{ 
       position: 'absolute',
       top: 0,
@@ -17,13 +23,21 @@ const FirstAndSecond: React.FC =() => {
       height: '100vh',
       borderRadius: '4px',
       border: '4px solid #fff',
-      opacity: frameOpacity, 
+      opacity: frameOpacity,
+      scale: frameScale  
     }} />
   </Sticky>
 }
 
 const First: React.FC =() => {
-  return <Sticky  className="first"></Sticky>
+  const {scrollYProgress} = useViewportScroll();
+  const firstScale = useTransform(scrollYProgress, 
+    [0.198, 0.264, 0.558, 0.627], 
+    [1, 0.511, 0.511, 1]
+  );
+  return <Sticky className="first">
+
+  </Sticky>
 }
 
 export default FirstAndSecond

@@ -49,5 +49,5 @@ export const Sticky = styled.div`
     height: 100vh;
     top: 0;
     left: 0;
-    rigth: 0;
+    right: 0;
 `;
